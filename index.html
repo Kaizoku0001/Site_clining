@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tazalyk Service - Профессиональный клининг в Алматы</title>
+    <meta name="description" content="✅ Профессиональная уборка квартир, офисов, после ремонта в Алматы. Мойка окон. Гарантия качества! Лучшие цены.">
+    <meta name="keywords" content="уборка Алматы, клининг, мойка окон, уборка после ремонта, профессиональная уборка">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tazalyk Service - Профессиональная уборка в Алматы">
+    <meta property="og:description" content="Профессиональная уборка квартир, офисов, после ремонта в Алматы. Мойка окон.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tazalykservice.kz">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Tazalyk Service",
+        "description": "Профессиональная клининговая компания в Алматы",
+        "url": "https://tazalykservice.kz",
+        "telephone": "+77474507959",
+        "email": "servicetazalyk@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Алматы",
+            "addressCountry": "KZ"
+        },
+        "areaServed": "Алматы и область",
+        "serviceType": [
+            "Уборка помещений",
+            "Мойка окон",
+            "Уборка после ремонта"
+        ],
+        "priceRange": "₸₸"
+    }
+    </script>
+    
+    <link rel="canonical" href="https://tazalykservice.kz">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧹</text></svg>">
+    
+    <!-- Preconnect для ускорения загрузки -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <!-- КРИТИЧЕСКИЙ CSS (ИСПРАВЛЕННЫЙ) -->
+    <style>
+        /* ===== CRITICAL CSS - FIXED ===== */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 80px; /* Для якорных ссылок */
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #333;
+            line-height: 1.5;
+            background: white;
+            padding-top: 0; /* ОБЯЗАТЕЛЬНО: убираем padding-top */
+            margin-top: 0; /* ОБЯЗАТЕЛЬНО: убираем margin-top */
+        }
+        
+        /* Убираем все возможные отступы сверху */
+        body::before {
+            display: none !important;
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preloader-content {
+            text-align: center;
+        }
+        
+        .preloader-icon {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #00bfff;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Header - ФИКСИРОВАННЫЙ И БЕЗ МАРГИНОВ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 70px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00bfff, #3fd46b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+        }
+        
+        /* HERO SECTION - ИСПРАВЛЕНО: НИКАКИХ ОТСТУПОВ СВЕРХУ */
+        .hero {
+            padding-top: 70px; /* Только отступ равный высоте header */
+            padding-bottom: 60px;
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.05), rgba(63, 212, 107, 0.05));
+            min-height: calc(100vh - 70px); /* Минимальная высота минус header */
+            display: flex;
+            align-items: center;
+            margin-top: 0 !important;
+        }
+        
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #1a1a1a;
+        }
+        
+        .highlight {
+            color: #00bfff;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        /* Кнопки */
+        .btn-primary, .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00bfff, #3fd46b);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #00bfff;
+            border: 2px solid #00bfff;
+        }
+        
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 2px;
+        }
+        
+        /* Секция "Как мы работаем" */
+        .process-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: #00bfff;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 20px auto 0;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .process-step {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00bfff, #3fd46b);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
+        }
+        
+        /* Скрываем неиспользуемые элементы до загрузки CSS */
+        .nav-links,
+        .header-actions .btn-contact,
+        .hero-visual,
+        .particles-container,
+        .floating-cards {
+            display: none;
+        }
+        
+        /* Делаем видимыми после загрузки CSS */
+        .styles-loaded .nav-links,
+        .styles-loaded .header-actions .btn-contact,
+        .styles-loaded .hero-visual,
+        .styles-loaded .particles-container,
+        .styles-loaded .floating-cards {
+            display: block;
+        }
+        
+        .styles-loaded .menu-toggle {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding-top: 80px; /* Увеличиваем для мобильных */
+                min-height: calc(100vh - 80px);
+                padding-bottom: 40px;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-step {
+                padding: 25px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .header {
+                height: 80px;
+            }
+        }
+        
+        /* Убираем все возможные маргины сверху для всех секций */
+        section {
+            margin-top: 0;
+            padding-top: 0;
+        }
+        
+        section:first-of-type {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+    </style>
+    
+    <!-- Загрузка основного CSS асинхронно -->
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet';document.documentElement.classList.add('styles-loaded')">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    
+    <!-- Шрифты загружаем асинхронно -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" 
+          as="style" 
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-icon"></div>
+            <p>Загружаем чистоту...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <div class="logo-circle">
+                    <span>TZ</span>
+                </div>
+                <div>
+                    <div>Tazalyk</div>
+                    <div style="font-size: 0.8rem; color: #666;">Service</div>
+                </div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#process" class="nav-link">Как работаем</a>
+                <a href="#portfolio" class="nav-link">Работы</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+            </div>
+            
+            <div class="header-actions">
+                <button class="btn-contact" onclick="APP.openWhatsAppModal()">
+                    Заказать
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (БЕЗ КНОПКИ "РАССЧИТАТЬ СТОИМОСТЬ") -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div style="background: #00bfff; color: white; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 20px;">
+                    Алматы
+                </div>
+                <h1 class="hero-title">Профессиональный клининг для вашего <span class="highlight">комфорта</span></h1>
+                <p class="hero-description">
+                    Безупречная чистота квартир, офисов и коммерческих помещений. 
+                    Используем экологичные средства и современное оборудование.
+                </p>
+                
+                <!-- КНОПКА УБРАНА ПО ВАШЕМУ ЗАПРОСУ -->
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 40px;">
+                    <button class="btn-primary" onclick="APP.openWhatsAppModal()">
+                        📞 Заказать консультацию
+                    </button>                     
+                </div>
+            </div>
+            
+            <div class="hero-visual" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+                <p>Полный спектр клининговых услуг для дома и бизнеса в Алматы</p>
+            </div>
+            
+            <div class="process-steps">
+                <!-- Service 1 -->
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon" style="font-size: 2.5rem; color: #00bfff; margin-bottom: 20px; display: block;">
+                        🏠
+                    </div>
+                    <h3 class="step-title">Уборка после ремонта</h3>
+                    <p class="step-description">Тщательное удаление строительной пыли и мусора. Мытье окон и подоконников, очистка сантехники.</p>
+                    <button class="btn-primary" onclick="APP.openWhatsAppModal()" style="width: 100%; margin-top: 15px;">Заказать услугу</button>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon" style="font-size: 2.5rem; color: #00bfff; margin-bottom: 20px; display: block;">
+                        🪟
+                    </div>
+                    <h3 class="step-title">Мойка окон</h3>
+                    <p class="step-description">Безупречная чистота без разводов. Панорамные и витражные окна, очистка рам и откосов, полировка стекол.</p>
+                    <button class="btn-primary" onclick="APP.openWhatsAppModal()" style="width: 100%; margin-top: 15px;">Заказать услугу</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как мы работаем Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Как мы работаем</h2>
+                <p>Профессиональный подход к клинингу в Алматы – от заявки до гарантии качества</p>
+            </div>
+            
+            <div class="process-steps">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon" style="font-size: 2.5rem; margin-bottom: 20px; display: block;">
+                        📞
+                    </div>
+                    <h3 class="step-title">Заявка</h3>
+                    <p class="step-description">Оставляете заявку по телефону или через наш сайт. Быстрая консультация по услугам уборки в Алматы.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon" style="font-size: 2.5rem; margin-bottom: 20px; display: block;">
+                        🤝
+                    </div>
+                    <h3 class="step-title">Подтверждение</h3>
+                    <p class="step-description">Согласовываем дату и время уборки. Бесплатный выезд оценщика в Алматы для расчета стоимости.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon" style="font-size: 2.5rem; margin-bottom: 20px; display: block;">
+                        👥
+                    </div>
+                    <h3 class="step-title">Приезд команды</h3>
+                    <p class="step-description">Наша команда приезжает со всем оборудованием и профессиональными средствами для уборки.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon" style="font-size: 2.5rem; margin-bottom: 20px; display: block;">
+                        🧹
+                    </div>
+                    <h3 class="step-title">Качественная уборка</h3>
+                    <p class="step-description">Проводим уборку по утвержденному чек-листу. Используем профессиональное оборудование для клининга.</p>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-icon" style="font-size: 2.5rem; margin-bottom: 20px; display: block;">
+                        ✅
+                    </div>
+                    <h3 class="step-title">Контроль качества</h3>
+                    <p class="step-description">Проверяем результат вместе с вами. Гарантируем 100% удовлетворение качеством уборки.</p>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-icon" style="font-size: 2.5rem; margin-bottom: 20px; display: block;">
+                        🛡️
+                    </div>
+                    <h3 class="step-title">Гарантия</h3>
+                    <p class="step-description">Предоставляем гарантию на все виды работ. Ваша чистота – наша ответственность!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" style="padding: 80px 0; background: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши работы</h2>
+                <p>Более 500 успешно выполненных проектов в Алматы</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div>
+                    <img data-src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" 
+                         alt="Уборка квартиры" 
+                         loading="lazy"
+                         style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div>
+                    <img data-src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" 
+                         alt="Мытье окон" 
+                         loading="lazy"
+                         style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div>
+                    <img data-src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" 
+                         alt="Уборка офиса" 
+                         loading="lazy"
+                         style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" style="background: #1a1a1a; color: white; padding: 80px 0 20px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 50px;">
+                <!-- Контакты -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+                        <div style="background: linear-gradient(135deg, #00bfff, #3fd46b); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">TZ</div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">Tazalyk Service</h3>
+                            <p style="opacity: 0.8; font-size: 0.9rem;">Профессиональный клининг в Алматы</p>
+                        </div>
+                    </div>
+                    <p style="opacity: 0.8; margin-bottom: 25px; line-height: 1.7;">
+                        Безупречная чистота для вашего комфорта. Работаем с 2018 года. 
+                        Используем экологичные средства и современное оборудование.
+                    </p>
+                </div>
+                
+                <!-- Контактная информация -->
+                <div>
+                    <h3 style="color: white; margin-bottom: 25px; position: relative; display: inline-block;">
+                        Контакты
+                        <span style="position: absolute; bottom: -8px; left: 0; width: 40px; height: 3px; background: #00bfff;"></span>
+                    </h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 1.2rem;">📞</span>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 2px;">Телефоны</p>
+                                <a href="https://wa.me/77474507959" target="_blank" style="color: #00bfff; text-decoration: none; display: block;">
+                                    +7 (747) 450-79-59 (WhatsApp)
+                                </a>
+                                <a href="https://wa.me/77777777777" target="_blank" style="color: #00bfff; text-decoration: none; display: block; margin-top: 5px;">
+                                    +7 (777) 777-77-77 (WhatsApp)
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 1.2rem;">📧</span>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 2px;">Email</p>
+                                <a href="mailto:servicetazalyk@gmail.com" style="color: #00bfff; text-decoration: none;">
+                                    servicetazalyk@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 1.2rem;">📍</span>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 2px;">Мы находимся</p>
+                                <p style="opacity: 0.9;">Алматы, Казахстан</p>
+                                <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 5px;">Работаем по всему городу и области</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Социальные сети (ИСПРАВЛЕННЫЙ INSTAGRAM) -->
+                <div>
+                    <h3 style="color: white; margin-bottom: 25px; position: relative; display: inline-block;">
+                        Мы в соцсетях
+                        <span style="position: absolute; bottom: -8px; left: 0; width: 40px; height: 3px; background: #00bfff;"></span>
+                    </h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <!-- ИСПРАВЛЕННАЯ ССЫЛКА НА INSTAGRAM -->
+                        <a href="https://www.instagram.com/tazalyk_service82?igsh=MWtvMnY0Zm5qd2czaA%3D%3D&utm_source=qr" target="_blank" 
+                           style="display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.05); padding: 12px 15px; border-radius: 8px; text-decoration: none; color: white; transition: all 0.3s ease;">
+                            <div style="background: linear-gradient(45deg, #833AB4, #E1306C, #F77737); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 1.2rem;">📸</span>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 2px;">Instagram</p>
+                                <p style="opacity: 0.8; font-size: 0.9rem;">@tazalyk_service82</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://wa.me/77474507959" target="_blank" 
+                           style="display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.05); padding: 12px 15px; border-radius: 8px; text-decoration: none; color: white; transition: all 0.3s ease;">
+                            <div style="background: linear-gradient(135deg, #25D366, #128C7E); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 1.2rem;">💬</span>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 2px;">WhatsApp 1</p>
+                                <p style="opacity: 0.8; font-size: 0.9rem;">+7 747 450 79 59</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://wa.me/77777777777" target="_blank" 
+                           style="display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.05); padding: 12px 15px; border-radius: 8px; text-decoration: none; color: white; transition: all 0.3s ease;">
+                            <div style="background: linear-gradient(135deg, #25D366, #128C7E); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 1.2rem;">💬</span>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 2px;">WhatsApp 2</p>
+                                <p style="opacity: 0.8; font-size: 0.9rem;">+7 777 777 77 77</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карта -->
+            <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 25px; margin-bottom: 40px;">
+                <h3 style="color: white; margin-bottom: 20px; text-align: center;">Наше местоположение</h3>
+                <div style="width: 100%; height: 300px; background: rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 3rem; margin-bottom: 15px;">📍</div>
+                        <h4 style="color: white; margin-bottom: 10px;">Алматы, Казахстан</h4>
+                        <p style="opacity: 0.8; max-width: 400px; margin: 0 auto;">
+                            Мы предоставляем услуги по всему городу. Свяжитесь с нами для уточнения адреса выезда.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Копирайт -->
+            <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="opacity: 0.6; font-size: 0.9rem; margin-bottom: 5px;">
+                    © 2024 Tazalyk Service. Все права защищены.
+                </p>
+                <p style="opacity: 0.5; font-size: 0.8rem;">
+                    Профессиональный клининг в Алматы | Уборка квартир, офисов, после ремонта
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollTop" style="display: none; position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #00bfff, #3fd46b); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 999; box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3); font-size: 1.2rem;">↑</button>
+
+    <!-- Критичный JavaScript -->
+    <script>
+        // Глобальный объект приложения
+        window.APP = {
+            // Скрыть preloader
+            hidePreloader: function() {
+                setTimeout(function() {
+                    var preloader = document.getElementById('preloader');
+                    if (preloader) {
+                        preloader.style.opacity = '0';
+                        setTimeout(function() {
+                            preloader.style.display = 'none';
+                        }, 300);
+                    }
+                }, 500);
+            },
+            
+            // Открыть WhatsApp
+            openWhatsAppModal: function() {
+                var message = encodeURIComponent('Здравствуйте! Хочу получить консультацию по уборке.');
+                window.open('https://wa.me/77474507959?text=' + message, '_blank');
+            },
+            
+            // Открыть Instagram (ИСПРАВЛЕННАЯ ССЫЛКА)
+            openInstagram: function() {
+                window.open('https://www.instagram.com/tazalyk_service82?igsh=MWtvMnY0Zm5qd2czaA%3D%3D&utm_source=qr', '_blank');
+            },
+            
+            // Открыть WhatsApp 2
+            openWhatsApp2: function() {
+                var message = encodeURIComponent('Здравствуйте! Хочу получить консультацию по уборке.');
+                window.open('https://wa.me/77777777777?text=' + message, '_blank');
+            }
+        };
+
+        // Инициализация при загрузке DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Скрыть preloader
+            APP.hidePreloader();
+            
+            // 2. Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    var targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        var headerHeight = document.querySelector('.header').offsetHeight;
+                        var targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 3. Кнопка "Наверх"
+            var scrollTopBtn = document.getElementById('scrollTop');
+            if (scrollTopBtn) {
+                scrollTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        scrollTopBtn.style.display = 'block';
+                        setTimeout(function() {
+                            scrollTopBtn.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        scrollTopBtn.style.opacity = '0';
+                        setTimeout(function() {
+                            scrollTopBtn.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            }
+            
+            // 4. Анимация для шагов процесса
+            var processSteps = document.querySelectorAll('.process-step');
+            processSteps.forEach(function(step, index) {
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(20px)';
+                step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(function() {
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // 5. Инициализация кнопок
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(function() {
+                        btn.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+
+    <!-- Основной JavaScript -->
+    <script src="script.js" defer></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          media="print" 
+          onload="this.media='all'; this.onload=null;">
+</body>
+</html>
