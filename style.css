@@ -49,6 +49,162 @@ select {
     min-height: 44px; /* Минимальный размер для касаний */
 }
 
+/* ===== ЛОГОТИП TAZALYK CLEANING SERVICES ===== */
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-weight: 800;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo-main {
+    display: block;
+    text-align: center;
+    line-height: 1;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-left: 8px;
+}
+
+.logo-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+}
+
+.logo-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.65rem;
+    color: var(--gray);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Мобильный логотип в меню */
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-logo .logo-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+}
+
+.mobile-logo .logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-logo .logo-title {
+    font-size: 1rem;
+    color: var(--dark);
+}
+
+.mobile-logo .logo-subtitle {
+    font-size: 0.6rem;
+    color: var(--gray);
+}
+
+/* Логотип в футере */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.footer-logo .logo-circle {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--light);
+}
+
+.footer-logo .logo-text {
+    margin-left: 0;
+}
+
+.footer-logo .logo-title {
+    color: var(--light);
+    font-size: 1.1rem;
+}
+
+.footer-logo .logo-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.6rem;
+}
+
+/* Десктоп версия логотипа */
+@media (min-width: 768px) {
+    .logo-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+    
+    .logo-text {
+        margin-left: 12px;
+    }
+    
+    .logo-title {
+        font-size: 1.3rem;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 1.2px;
+    }
+    
+    .mobile-logo .logo-circle {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .footer-logo .logo-title {
+        font-size: 1.2rem;
+    }
+    
+    .footer-logo .logo-subtitle {
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .logo-title {
+        font-size: 1.4rem;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+    }
+}
+
 /* ===== PRELOADER ===== */
 .preloader {
     position: fixed;
@@ -171,46 +327,9 @@ select {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0;
     text-decoration: none;
     min-width: 0;
-}
-
-.logo-circle {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--light);
-    font-weight: 700;
-    font-size: 1rem;
-}
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.logo-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--dark);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.logo-subtitle {
-    font-size: 0.7rem;
-    color: var(--gray);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* Кнопка заказа в шапке */
@@ -253,7 +372,7 @@ select {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* ===== MOBILE MENU ===== */
+/* ===== MOBILE MENU (ИСПРАВЛЕННАЯ ВЕРСИЯ) ===== */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -267,20 +386,36 @@ select {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    padding-top: 80px; /* Отступ под шапку */
+    padding-top: 80px;
 }
 
 .mobile-menu.active {
     transform: translateX(0);
 }
 
+.mobile-menu-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: var(--light);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
 .mobile-menu-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    padding-top: 20px;
 }
 
 .mobile-menu-link {
@@ -294,18 +429,23 @@ select {
     border-radius: var(--radius);
     transition: var(--transition);
     font-size: 1.1rem;
+    background: var(--light-gray);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .mobile-menu-link i {
     width: 24px;
     font-size: 1.2rem;
     color: var(--primary);
+    text-align: center;
 }
 
 .mobile-menu-link:hover,
 .mobile-menu-link.active {
     background: rgba(0, 191, 255, 0.1);
     color: var(--primary);
+    transform: translateX(5px);
+    border-color: var(--primary);
 }
 
 .mobile-order-btn {
@@ -314,13 +454,15 @@ select {
     padding: 16px;
     font-size: 1.1rem;
     font-weight: 600;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--light);
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
 }
 
 /* Кнопка закрытия меню */
 .menu-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     width: 44px;
     height: 44px;
     background: none;
@@ -331,7 +473,91 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1001;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.menu-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Десктопное меню */
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: none;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: var(--radius);
+        transition: var(--transition);
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+    
+    .nav-link i {
+        font-size: 1rem;
+        color: var(--primary);
+    }
+    
+    .nav-link:hover {
+        color: var(--primary);
+        background: rgba(0, 191, 255, 0.1);
+        transform: translateY(-2px);
+    }
+    
+    .btn-contact {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--light);
+        border: none;
+        border-radius: var(--radius);
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 0.95rem;
+    }
+    
+    .btn-contact:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+    }
+}
+
+/* Для больших экранов */
+@media (min-width: 992px) {
+    .nav-links {
+        gap: 25px;
+    }
+    
+    .nav-link {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .btn-contact {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
 }
 
 /* ===== HERO SECTION (MOBILE) ===== */
@@ -1446,61 +1672,16 @@ select {
     .logo-circle {
         width: 50px;
         height: 50px;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
     
     .logo-title {
         font-size: 1.3rem;
     }
     
-    .menu-toggle {
-        display: none;
-    }
-    
-    .nav-links {
-        display: flex;
-        gap: 25px;
-    }
-    
-    .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 8px 16px;
-        border-radius: var(--radius);
-        transition: var(--transition);
-    }
-    
-    .nav-link:hover {
-        color: var(--primary);
-        background: rgba(0, 191, 255, 0.1);
-    }
-    
-    .btn-contact {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: var(--light);
-        border: none;
-        border-radius: var(--radius);
-        font-weight: 600;
-        cursor: pointer;
-        text-decoration: none;
-        transition: var(--transition);
-    }
-    
-    .btn-contact:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
-    }
-    
-    .mobile-menu {
-        display: none;
+    .logo-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 1.2px;
     }
     
     .hero-title {
@@ -1594,6 +1775,15 @@ select {
     
     .footer-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .logo-title {
+        font-size: 1.4rem;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
     }
     
     .floating-cards {
@@ -1731,6 +1921,7 @@ body {
 }
 
 /* Класс для блокировки скролла при открытом меню */
+body.menu-open,
 body.modal-open {
     overflow: hidden;
     position: fixed;
