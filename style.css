@@ -7,19 +7,58 @@
 }
 
 :root {
-    --primary: #00bfff;
+    /* Обновленные цвета для кнопок */
+    --btn-primary: #FF6B35; /* Яркий оранжевый */
+    --btn-primary-dark: #E85A20;
+    --btn-primary-light: #FF8C5A;
+    --btn-secondary: #4285F4; /* Яркий синий Google */
+    --btn-secondary-dark: #3367D6;
+    --btn-secondary-light: #5C9DFF;
+    --btn-success: #34A853; /* Зеленый успеха */
+    --btn-success-dark: #2E8B47;
+    --btn-success-light: #4FCB71;
+    --btn-accent: #FF4081; /* Акцентный розовый */
+    --btn-accent-dark: #E91E63;
+    
+    /* Основные цвета бренда */
+    --primary: #00bfff; /* Голубой */
     --primary-dark: #0099cc;
-    --secondary: #3fd46b;
-    --accent: #ff6b6b;
+    --primary-light: #66D9FF;
+    --secondary: #3fd46b; /* Зеленый */
+    --secondary-dark: #2EB857;
+    --accent: #FF6B6B; /* Коралловый */
+    --accent-dark: #FF5252;
+    
+    /* Нейтральные цвета */
     --dark: #1a1a1a;
-    --light: #ffffff;
-    --light-gray: #f8f9fa;
+    --dark-gray: #333333;
     --gray: #6c757d;
+    --light-gray: #f8f9fa;
+    --light: #ffffff;
+    
+    /* Текстовые цвета */
     --text: #333333;
     --text-light: #666666;
+    --text-on-dark: #ffffff;
+    
+    /* Эффекты */
     --radius: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
     --transition: all 0.3s ease;
+    --transition-fast: all 0.15s ease;
+    --transition-slow: all 0.5s ease;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-primary: 0 4px 20px rgba(255, 107, 53, 0.3);
+    --shadow-primary-hover: 0 8px 32px rgba(255, 107, 53, 0.5);
+    --shadow-secondary: 0 4px 20px rgba(66, 133, 244, 0.2);
+    --shadow-secondary-hover: 0 8px 32px rgba(66, 133, 244, 0.4);
+    
+    /* Дополнительные */
     --safe-area: env(safe-area-inset-bottom, 20px);
+    --vh: 1vh;
 }
 
 html {
@@ -27,6 +66,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 60px;
     -webkit-text-size-adjust: 100%;
+    height: 100%;
 }
 
 body {
@@ -36,8 +76,18 @@ body {
     color: var(--text);
     overflow-x: hidden;
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     background: var(--light);
     padding-bottom: var(--safe-area);
+    position: relative;
+}
+
+body.menu-open,
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 /* Улучшаем отзывчивость тапов */
@@ -46,7 +96,391 @@ a,
 input,
 select {
     font-size: 1rem;
-    min-height: 44px; /* Минимальный размер для касаний */
+    min-height: 44px;
+    cursor: pointer;
+}
+
+/* ===== ОБНОВЛЕННЫЕ СТИЛИ КНОПОК ===== */
+
+/* Базовые стили кнопок */
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.service-btn,
+.btn-contact,
+.mobile-order-btn,
+.map-link,
+.social-btn {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Эффект блеска для всех кнопок */
+.btn-primary::before,
+.btn-success::before,
+.service-btn::before,
+.btn-contact::before,
+.mobile-order-btn::before,
+.map-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        rgba(255, 255, 255, 0.2), 
+        transparent
+    );
+    transition: left 0.7s ease;
+    z-index: -1;
+}
+
+/* ===== ОСНОВНАЯ КНОПКА (ОРАНЖЕВАЯ) ===== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
+    color: var(--light);
+    box-shadow: var(--shadow-primary);
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-primary-hover);
+    background: linear-gradient(135deg, var(--btn-primary-light), var(--btn-primary));
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+/* Анимация иконки в основной кнопке */
+.btn-primary i {
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 1.1em;
+}
+
+.btn-primary:hover i {
+    transform: translateX(5px) scale(1.1);
+    color: #FFF;
+}
+
+/* ===== ВТОРИЧНАЯ КНОПКА (СИНЯЯ) ===== */
+.btn-secondary {
+    background: transparent;
+    color: var(--btn-secondary);
+    border: 2px solid var(--btn-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(66, 133, 244, 0.1), 
+        rgba(66, 133, 244, 0.05)
+    );
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.btn-secondary:hover {
+    color: var(--btn-secondary-dark);
+    border-color: var(--btn-secondary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-secondary-hover);
+}
+
+.btn-secondary:hover::after {
+    width: 100%;
+}
+
+.btn-secondary:hover i {
+    transform: translateX(5px);
+    color: var(--btn-secondary-dark);
+}
+
+/* ===== КНОПКА УСПЕХА (ЗЕЛЕНАЯ) ===== */
+.btn-success,
+.service-btn {
+    background: linear-gradient(135deg, var(--btn-success), var(--btn-success-dark));
+    color: var(--light);
+    box-shadow: 0 4px 20px rgba(52, 168, 83, 0.3);
+}
+
+.btn-success:hover,
+.service-btn:hover {
+    background: linear-gradient(135deg, var(--btn-success-light), var(--btn-success));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(52, 168, 83, 0.5);
+}
+
+.btn-success:hover::before,
+.service-btn:hover::before {
+    left: 100%;
+}
+
+/* ===== КНОПКА ЗАКАЗА В ШАПКЕ ===== */
+.btn-contact {
+    background: linear-gradient(135deg, var(--btn-accent), var(--btn-accent-dark));
+    color: var(--light);
+    box-shadow: 0 4px 20px rgba(255, 64, 129, 0.3);
+    font-weight: 700;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+}
+
+.btn-contact:hover {
+    background: linear-gradient(135deg, var(--btn-accent-dark), var(--btn-accent));
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 32px rgba(255, 64, 129, 0.5);
+}
+
+.btn-contact:hover::before {
+    left: 100%;
+}
+
+/* ===== КНОПКА В МОБИЛЬНОМ МЕНЮ ===== */
+.mobile-order-btn {
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
+    color: var(--light);
+    box-shadow: var(--shadow-primary);
+    margin-top: 20px;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.mobile-order-btn:hover {
+    background: linear-gradient(135deg, var(--btn-primary-light), var(--btn-primary));
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-primary-hover);
+}
+
+.mobile-order-btn:hover::before {
+    left: 100%;
+}
+
+/* ===== СОЦИАЛЬНЫЕ КНОПКИ ===== */
+.social-btn {
+    justify-content: flex-start;
+    padding-left: 20px;
+    font-weight: 600;
+}
+
+.social-btn.instagram {
+    background: linear-gradient(45deg, 
+        #405DE6, 
+        #833AB4 25%, 
+        #C13584 50%, 
+        #E1306C 75%, 
+        #FD1D1D
+    );
+    background-size: 200% 200%;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 20px rgba(253, 29, 29, 0.3);
+    animation: gradientShift 3s ease infinite;
+}
+
+.social-btn.whatsapp {
+    background: linear-gradient(135deg, 
+        #25D366, 
+        #128C7E
+    );
+    color: white;
+    border: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.social-btn.instagram:hover {
+    box-shadow: 0 8px 32px rgba(253, 29, 29, 0.5);
+    animation: gradientShift 1s ease infinite;
+}
+
+.social-btn.whatsapp:hover {
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+    background: linear-gradient(135deg, 
+        #34E879, 
+        #25D366
+    );
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== КНОПКА НА КАРТЕ ===== */
+.map-link {
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
+    color: var(--light);
+    box-shadow: var(--shadow-primary);
+    display: inline-flex;
+    width: auto;
+    padding: 12px 24px;
+}
+
+.map-link:hover {
+    background: linear-gradient(135deg, var(--btn-primary-light), var(--btn-primary));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary-hover);
+}
+
+.map-link:hover::before {
+    left: 100%;
+}
+
+/* ===== КНОПКИ В МОДАЛКАХ ===== */
+.modal-actions .btn-primary {
+    background: linear-gradient(135deg, var(--btn-success), var(--btn-success-dark));
+    box-shadow: 0 4px 20px rgba(52, 168, 83, 0.3);
+}
+
+.modal-actions .btn-primary:hover {
+    background: linear-gradient(135deg, var(--btn-success-light), var(--btn-success));
+    box-shadow: 0 8px 32px rgba(52, 168, 83, 0.5);
+}
+
+.modal-actions .btn-secondary {
+    background: transparent;
+    color: var(--gray);
+    border: 2px solid var(--gray);
+}
+
+.modal-actions .btn-secondary:hover {
+    color: var(--dark);
+    border-color: var(--dark);
+    background: rgba(0, 0, 0, 0.03);
+    transform: translateY(-2px);
+}
+
+/* ===== КНОПКА SCROLL TO TOP ===== */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
+    color: var(--light);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-primary);
+}
+
+.scroll-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: var(--shadow-primary-hover);
+    background: linear-gradient(135deg, var(--btn-primary-light), var(--btn-primary));
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ===== АНИМАЦИИ ДЛЯ КНОПОК ===== */
+
+/* Пульсация для важных кнопок */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 107, 53, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+    }
+}
+
+/* Применяем пульсацию к кнопкам в герое */
+.hero-buttons .btn-primary {
+    animation: pulse 2s infinite;
+}
+
+.hero-buttons .btn-primary:hover {
+    animation: none;
+}
+
+/* Анимация загрузки */
+@keyframes loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.btn-primary.loading,
+.btn-secondary.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.btn-primary.loading::after,
+.btn-secondary.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--light);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+}
+
+.btn-secondary.loading::after {
+    border-color: var(--btn-secondary);
+    border-top-color: transparent;
 }
 
 /* ===== ЛОГОТИП TAZALYK CLEANING SERVICES ===== */
@@ -54,7 +488,7 @@ select {
     width: 40px;
     height: 40px;
     min-width: 40px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -63,6 +497,7 @@ select {
     font-weight: 800;
     font-size: 1.2rem;
     font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
 }
 
 .logo-main {
@@ -141,7 +576,7 @@ select {
 }
 
 .footer-logo .logo-circle {
-    background: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
     color: var(--light);
 }
 
@@ -244,7 +679,7 @@ select {
     position: absolute;
     width: 40px;
     height: 4px;
-    background: var(--primary);
+    background: var(--btn-primary);
     border-radius: 2px;
     top: 50%;
     left: 50%;
@@ -257,7 +692,7 @@ select {
     position: absolute;
     width: 10px;
     height: 20px;
-    background: var(--secondary);
+    background: var(--btn-success);
     border-radius: 2px;
     top: -8px;
     left: -5px;
@@ -268,7 +703,7 @@ select {
     position: absolute;
     width: 8px;
     height: 8px;
-    background: var(--primary);
+    background: var(--btn-primary);
     border-radius: 50%;
     opacity: 0;
 }
@@ -312,6 +747,11 @@ select {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     padding: 0 15px;
+    transition: transform 0.3s ease;
+}
+
+.header.scrolled {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -330,11 +770,6 @@ select {
     gap: 0;
     text-decoration: none;
     min-width: 0;
-}
-
-/* Кнопка заказа в шапке */
-.btn-contact {
-    display: none; /* На мобильных скрываем, показываем в меню */
 }
 
 /* Гамбургер-меню */
@@ -372,7 +807,7 @@ select {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* ===== MOBILE MENU (ИСПРАВЛЕННАЯ ВЕРСИЯ) ===== */
+/* ===== MOBILE MENU ===== */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -436,29 +871,16 @@ select {
 .mobile-menu-link i {
     width: 24px;
     font-size: 1.2rem;
-    color: var(--primary);
+    color: var(--btn-primary);
     text-align: center;
 }
 
 .mobile-menu-link:hover,
 .mobile-menu-link.active {
-    background: rgba(0, 191, 255, 0.1);
-    color: var(--primary);
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--btn-primary);
     transform: translateX(5px);
-    border-color: var(--primary);
-}
-
-.mobile-order-btn {
-    margin-top: 20px;
-    width: 100%;
-    padding: 16px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: var(--light);
-    border: none;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+    border-color: var(--btn-primary);
 }
 
 /* Кнопка закрытия меню */
@@ -478,7 +900,8 @@ select {
 }
 
 .menu-close:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--btn-primary);
 }
 
 /* Десктопное меню */
@@ -512,12 +935,12 @@ select {
     
     .nav-link i {
         font-size: 1rem;
-        color: var(--primary);
+        color: var(--btn-primary);
     }
     
     .nav-link:hover {
-        color: var(--primary);
-        background: rgba(0, 191, 255, 0.1);
+        color: var(--btn-primary);
+        background: rgba(255, 107, 53, 0.1);
         transform: translateY(-2px);
     }
     
@@ -526,24 +949,11 @@ select {
         align-items: center;
         gap: 8px;
         padding: 10px 20px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: var(--light);
-        border: none;
-        border-radius: var(--radius);
-        font-weight: 600;
-        cursor: pointer;
-        text-decoration: none;
-        transition: var(--transition);
         font-size: 0.95rem;
-    }
-    
-    .btn-contact:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+        min-height: auto;
     }
 }
 
-/* Для больших экранов */
 @media (min-width: 992px) {
     .nav-links {
         gap: 25px;
@@ -563,8 +973,12 @@ select {
 /* ===== HERO SECTION (MOBILE) ===== */
 .hero {
     padding: 80px 15px 40px;
-    background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(63, 212, 107, 0.1));
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.1), 
+        rgba(66, 133, 244, 0.1)
+    );
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     display: flex;
     align-items: center;
 }
@@ -581,23 +995,25 @@ select {
 
 .hero-badge {
     display: inline-block;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
     color: var(--light);
     padding: 6px 16px;
     border-radius: 20px;
     font-weight: 600;
     font-size: 0.8rem;
     margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
 }
 
 .hero-title {
     font-size: 1.8rem;
     line-height: 1.3;
     margin-bottom: 15px;
+    color: var(--dark);
 }
 
 .highlight {
-    color: var(--primary);
+    color: var(--btn-primary);
     position: relative;
     display: inline-block;
 }
@@ -609,7 +1025,7 @@ select {
     left: 0;
     width: 100%;
     height: 8px;
-    background: rgba(0, 191, 255, 0.2);
+    background: rgba(255, 107, 53, 0.2);
     z-index: -1;
     border-radius: 4px;
 }
@@ -621,35 +1037,64 @@ select {
     line-height: 1.5;
 }
 
-/* Статистика в колонку */
-.hero-stats {
+/* ===== ГАРАНТИИ ДЛЯ КЛИЕНТА ===== */
+.hero-guarantees {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin: 30px 0;
-    padding: 0 10px;
 }
 
-.stat {
-    text-align: center;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.8);
+.guarantee-card {
+    background: rgba(255, 255, 255, 0.95);
     border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    transition: var(--transition);
 }
 
-.stat-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary);
-    line-height: 1;
+.guarantee-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--btn-primary);
+}
+
+.guarantee-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.1), 
+        rgba(66, 133, 244, 0.1)
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--btn-primary);
+}
+
+.guarantee-content {
+    flex: 1;
+}
+
+.guarantee-content h4 {
+    font-size: 1rem;
     margin-bottom: 5px;
+    color: var(--dark);
+    font-weight: 600;
 }
 
-.stat-label {
+.guarantee-content p {
     font-size: 0.85rem;
     color: var(--text-light);
+    line-height: 1.4;
 }
 
 /* Кнопки в колонку */
@@ -658,50 +1103,6 @@ select {
     flex-direction: column;
     gap: 12px;
     margin: 30px 0;
-}
-
-.btn-primary,
-.btn-secondary {
-    width: 100%;
-    padding: 16px 24px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: var(--radius);
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: var(--light);
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-}
-
-.btn-secondary:hover {
-    background: rgba(0, 191, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-/* Карточки услуг в герое */
-.floating-cards {
-    display: none; /* На мобильных скрываем анимированные карточки */
 }
 
 /* ===== SERVICES (MOBILE) ===== */
@@ -716,7 +1117,7 @@ select {
 
 .section-subtitle {
     font-size: 0.8rem;
-    color: var(--primary);
+    color: var(--btn-primary);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -727,6 +1128,7 @@ select {
 .section-title {
     font-size: 1.5rem;
     margin-bottom: 15px;
+    color: var(--dark);
 }
 
 .section-description {
@@ -746,13 +1148,15 @@ select {
     background: var(--light);
     border-radius: var(--radius);
     padding: 25px 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--btn-primary);
 }
 
 .service-icon {
@@ -760,16 +1164,25 @@ select {
     height: 60px;
     margin-bottom: 20px;
     position: relative;
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.1), 
+        rgba(66, 133, 244, 0.1)
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .service-icon i {
     font-size: 1.8rem;
-    color: var(--primary);
+    color: var(--btn-primary);
 }
 
 .service-card h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: var(--dark);
 }
 
 .service-card > p {
@@ -790,30 +1203,13 @@ select {
     gap: 10px;
     margin-bottom: 8px;
     font-size: 0.9rem;
+    color: var(--text);
 }
 
 .service-features i {
-    color: var(--secondary);
+    color: var(--btn-success);
     font-size: 0.9rem;
     min-width: 16px;
-}
-
-.service-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: var(--light);
-    border: none;
-    border-radius: var(--radius);
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 1rem;
-}
-
-.service-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
 }
 
 /* ===== PORTFOLIO (MOBILE) ===== */
@@ -831,13 +1227,34 @@ select {
 .portfolio-item {
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
+    position: relative;
+}
+
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        transparent 60%, 
+        rgba(0, 0, 0, 0.8)
+    );
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .portfolio-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
+}
+
+.portfolio-item:hover::before {
+    opacity: 1;
 }
 
 .portfolio-image {
@@ -861,9 +1278,15 @@ select {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     padding: 20px;
     color: var(--light);
+    z-index: 2;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
 }
 
 .portfolio-overlay h3 {
@@ -880,18 +1303,22 @@ select {
 
 .portfolio-tag {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 107, 53, 0.9);
     color: var(--light);
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 0.75rem;
     margin-right: 8px;
-    backdrop-filter: blur(10px);
+    font-weight: 500;
 }
 
 /* ===== PROCESS (MOBILE) ===== */
 .process {
     padding: 40px 15px;
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.05), 
+        rgba(66, 133, 244, 0.05)
+    );
 }
 
 .process-timeline {
@@ -904,8 +1331,11 @@ select {
     left: 15px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    width: 3px;
+    background: linear-gradient(to bottom, 
+        var(--btn-primary), 
+        var(--btn-secondary)
+    );
 }
 
 .process-step {
@@ -920,23 +1350,29 @@ select {
     top: 0;
     font-size: 2rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--btn-primary);
     background: var(--light);
     width: 40px;
+    height: 40px;
     text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
 }
 
 .step-content {
     background: var(--light);
     padding: 20px;
     border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
     margin-left: 10px;
+    border-left: 4px solid var(--btn-primary);
 }
 
 .step-content h3 {
     font-size: 1.1rem;
     margin-bottom: 8px;
+    color: var(--dark);
 }
 
 .step-content p {
@@ -944,119 +1380,164 @@ select {
     color: var(--text-light);
 }
 
-/* ===== PRICING (MOBILE) ===== */
+/* ===== PRICING - УПРОЩЕННАЯ ВЕРСИЯ ===== */
 .pricing {
     padding: 40px 15px;
     background: var(--light-gray);
 }
 
-.pricing-cards {
+.pricing-simple {
+    text-align: center;
+}
+
+.pricing-features-grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-bottom: 40px;
 }
 
-.pricing-card {
+.pricing-feature {
     background: var(--light);
     border-radius: var(--radius);
     padding: 25px 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    position: relative;
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.pricing-card:hover {
+.pricing-feature:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
+    border-color: var(--btn-primary);
 }
 
-.pricing-card.featured {
-    border: 2px solid var(--primary);
-    transform: scale(1);
+.pricing-feature i {
+    font-size: 2rem;
+    color: var(--btn-primary);
+    margin-bottom: 15px;
+    display: block;
 }
 
-.pricing-badge {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent);
-    color: var(--light);
-    padding: 4px 16px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.pricing-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.pricing-header h3 {
+.pricing-feature h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: var(--dark);
 }
 
-.price {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.amount {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary);
-}
-
-.period {
-    font-size: 0.85rem;
+.pricing-feature p {
+    font-size: 0.95rem;
     color: var(--text-light);
+    line-height: 1.5;
 }
 
-.pricing-features {
-    list-style: none;
+.pricing-calculator-simple {
+    background: var(--light);
+    border-radius: var(--radius);
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.pricing-calculator-simple h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.pricing-calculator-simple > p {
+    font-size: 1rem;
+    color: var(--text-light);
     margin-bottom: 25px;
+    line-height: 1.5;
 }
 
-.pricing-features li {
+.calculator-preview {
+    margin-bottom: 25px;
+    background: rgba(255, 107, 53, 0.05);
+    border-radius: var(--radius);
+    padding: 15px;
+}
+
+.preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.preview-item:last-child {
+    border-bottom: none;
+}
+
+.preview-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.preview-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--btn-primary);
+}
+
+.pricing-note {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-}
-
-.pricing-features i {
-    color: var(--secondary);
-    min-width: 16px;
-}
-
-.pricing-features .disabled {
-    opacity: 0.5;
-}
-
-.pricing-calculator {
-    text-align: center;
-    padding: 30px 20px;
-    background: var(--light);
+    padding: 20px;
+    background: rgba(255, 107, 53, 0.1);
     border-radius: var(--radius);
-    margin-top: 30px;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.pricing-note i {
+    color: var(--btn-primary);
+    font-size: 1.2rem;
+    min-width: 24px;
 }
 
 /* ===== CTA SECTION (MOBILE) ===== */
 .cta-section {
     padding: 40px 15px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, 
+        var(--btn-primary), 
+        var(--btn-secondary)
+    );
     color: var(--light);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: cover;
+    opacity: 0.1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
 }
 
 .cta-content h2 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: var(--light);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .cta-content > p {
@@ -1071,6 +1552,31 @@ select {
     flex-direction: column;
     gap: 12px;
     margin-bottom: 30px;
+}
+
+/* Специальные стили для кнопок в CTA */
+.cta-section .btn-primary {
+    background: var(--light);
+    color: var(--btn-primary);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cta-section .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--btn-primary-dark);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.4);
+}
+
+.cta-section .btn-secondary {
+    background: transparent;
+    color: var(--light);
+    border: 2px solid var(--light);
+}
+
+.cta-section .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    border-color: var(--light);
 }
 
 .cta-contacts {
@@ -1121,7 +1627,7 @@ select {
 
 .contact-item i {
     font-size: 1.2rem;
-    color: var(--primary);
+    color: var(--btn-primary);
     margin-top: 3px;
     min-width: 24px;
 }
@@ -1129,6 +1635,7 @@ select {
 .contact-item h4 {
     font-size: 1rem;
     margin-bottom: 5px;
+    color: var(--dark);
 }
 
 .contact-item p,
@@ -1141,12 +1648,13 @@ select {
 }
 
 .contact-item a:hover {
-    color: var(--primary);
+    color: var(--btn-primary);
 }
 
 .contact-social h4 {
     font-size: 1rem;
     margin-bottom: 15px;
+    color: var(--dark);
 }
 
 .social-buttons {
@@ -1155,44 +1663,18 @@ select {
     gap: 12px;
 }
 
-.social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px;
-    border-radius: var(--radius);
-    border: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.social-btn:hover {
-    transform: translateY(-2px);
-}
-
-.social-btn.instagram {
-    background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
-    color: white;
-}
-
-.social-btn.whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-}
-
 .contact-map {
     background: var(--light-gray);
     border-radius: var(--radius);
     padding: 30px 20px;
     text-align: center;
+    box-shadow: var(--shadow-sm);
 }
 
 .contact-map h3 {
     font-size: 1.2rem;
     margin-bottom: 15px;
+    color: var(--dark);
 }
 
 .map-placeholder {
@@ -1204,31 +1686,12 @@ select {
 
 .map-placeholder i {
     font-size: 3rem;
-    color: var(--primary);
+    color: var(--btn-primary);
 }
 
 .map-placeholder p {
     color: var(--text-light);
     font-size: 0.95rem;
-}
-
-.map-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: var(--light);
-    text-decoration: none;
-    border-radius: var(--radius);
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: var(--transition);
-}
-
-.map-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
 }
 
 /* ===== FOOTER (MOBILE) ===== */
@@ -1288,8 +1751,9 @@ select {
 }
 
 .social-link:hover {
-    background: var(--primary);
-    transform: translateY(-3px);
+    background: var(--btn-primary);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
 }
 
 .footer-col h4 {
@@ -1308,7 +1772,7 @@ select {
     transform: translateX(-50%);
     width: 40px;
     height: 2px;
-    background: var(--primary);
+    background: var(--btn-primary);
 }
 
 .footer-links {
@@ -1327,7 +1791,8 @@ select {
 }
 
 .footer-links a:hover {
-    color: var(--primary);
+    color: var(--btn-primary);
+    padding-left: 5px;
 }
 
 .contact-info p {
@@ -1375,23 +1840,25 @@ select {
 
 .modal-content {
     background: var(--light);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     width: 100%;
     max-width: 400px;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
     animation: modalSlideIn 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 107, 53, 0.1);
 }
 
 @keyframes modalSlideIn {
     from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(50px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -1401,7 +1868,7 @@ select {
     right: 15px;
     width: 36px;
     height: 36px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 107, 53, 0.1);
     border: none;
     border-radius: 50%;
     font-size: 1.2rem;
@@ -1415,18 +1882,25 @@ select {
 }
 
 .modal-close:hover {
-    background: rgba(0, 0, 0, 0.2);
-    transform: rotate(90deg);
+    background: var(--btn-primary);
+    color: var(--light);
+    transform: rotate(90deg) scale(1.1);
 }
 
 .modal-header {
     padding: 30px 20px 20px;
     text-align: center;
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.05), 
+        rgba(66, 133, 244, 0.05)
+    );
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .modal-header h3 {
     font-size: 1.3rem;
     margin-bottom: 10px;
+    color: var(--dark);
 }
 
 .modal-header p {
@@ -1451,12 +1925,14 @@ select {
     text-decoration: none;
     color: var(--text);
     transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .whatsapp-option:hover,
 .instagram-option:hover {
-    background: rgba(0, 191, 255, 0.1);
+    background: rgba(255, 107, 53, 0.1);
     transform: translateX(5px);
+    border-color: var(--btn-primary);
 }
 
 .option-content {
@@ -1476,12 +1952,13 @@ select {
     justify-content: center;
     color: var(--light);
     font-size: 1.2rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--btn-primary), var(--btn-primary-dark));
 }
 
 .option-info h4 {
     font-size: 1rem;
     margin-bottom: 5px;
+    color: var(--dark);
 }
 
 .option-info p {
@@ -1493,22 +1970,23 @@ select {
 .option-status,
 .option-followers {
     font-size: 0.8rem;
-    color: var(--secondary);
+    color: var(--btn-success);
     font-weight: 500;
 }
 
 .modal-note {
     padding: 20px;
-    background: rgba(63, 212, 107, 0.1);
-    border-radius: 0 0 var(--radius) var(--radius);
+    background: rgba(52, 168, 83, 0.1);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     font-size: 0.9rem;
     color: var(--text-light);
     display: flex;
     align-items: center;
     gap: 10px;
+    border-top: 1px solid rgba(52, 168, 83, 0.2);
 }
 
-/* Calculator Modal */
+/* ===== УЛУЧШЕННЫЙ КАЛЬКУЛЯТОР ===== */
 .calculator-form {
     padding: 20px;
 }
@@ -1517,139 +1995,345 @@ select {
     margin-bottom: 20px;
 }
 
+.form-group-large {
+    flex: 1;
+}
+
 .form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
     font-size: 0.95rem;
+    color: var(--dark);
 }
 
-.form-group select,
-.form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: var(--radius);
-    font-size: 1rem;
-    background: var(--light);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    transition: var(--transition);
-}
-
-.form-group select:focus,
-.form-group input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
-}
-
-.form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.checkbox-label {
+.section-label {
     display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-.checkbox-label input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-    cursor: pointer;
-}
-
-.calculator-result {
-    margin: 30px 0;
-    padding: 20px;
-    background: var(--light-gray);
-    border-radius: var(--radius);
-}
-
-.result-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--dark);
     margin-bottom: 15px;
 }
 
-.total-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
+.large-select,
+.large-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--radius);
+    background: var(--light);
+    transition: var(--transition);
 }
 
-.result-details {
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
+.large-select:focus,
+.large-input:focus {
+    outline: none;
+    border-color: var(--btn-primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
-.detail-item {
+.input-with-buttons {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.detail-item.total {
-    font-weight: 600;
-    border-top: 2px solid var(--primary);
-    padding-top: 10px;
-    margin-top: 10px;
-}
-
-.modal-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* ===== SCROLL TO TOP (MOBILE) ===== */
-.scroll-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: var(--light);
+.input-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    background: var(--btn-primary);
+    color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius);
     font-size: 1.2rem;
     cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: var(--transition);
-    z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+    transition: var(--transition);
 }
 
-.scroll-top:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 191, 255, 0.4);
+.input-btn:hover {
+    background: var(--btn-primary-dark);
+    transform: scale(1.05);
 }
 
-.scroll-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+.input-btn:active {
+    transform: scale(0.95);
+}
+
+.input-range {
+    margin-top: 10px;
+}
+
+.input-range input[type="range"] {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e0e0e0;
+    border-radius: 3px;
+    outline: none;
+    margin: 10px 0;
+}
+
+.input-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--btn-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.counter-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    background: var(--btn-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.counter-btn:hover {
+    background: var(--btn-primary-dark);
+    transform: scale(1.05);
+}
+
+.counter-btn:active {
+    transform: scale(0.95);
+}
+
+.counter-display {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+/* Сетка чекбоксов */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.checkbox-card {
+    width: 100%;
+}
+
+.checkbox-label-large {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+}
+
+.checkbox-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--radius);
+    background: var(--light);
+    transition: var(--transition);
+    width: 100%;
+}
+
+.checkbox-label-large input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-label-large.checked .checkbox-content {
+    border-color: var(--btn-primary);
+    background: rgba(255, 107, 53, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+}
+
+.checkbox-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.1), 
+        rgba(66, 133, 244, 0.1)
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--btn-primary);
+}
+
+.checkbox-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.checkbox-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.checkbox-price {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--btn-primary);
+}
+
+/* Результат расчета */
+.calculator-result-large {
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.05), 
+        rgba(66, 133, 244, 0.05)
+    );
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 25px 0;
+    border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.result-header-large {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.2);
+}
+
+.result-title h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.result-title p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.total-price-large {
+    display: flex;
+    align-items: baseline;
+}
+
+.price-amount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--btn-primary);
+    line-height: 1;
+}
+
+.price-currency {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--btn-primary);
+    margin-left: 5px;
+}
+
+.result-details-large {
+    margin-bottom: 15px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: var(--text);
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row.total {
+    border-top: 2px solid var(--btn-primary);
+    margin-top: 10px;
+    padding-top: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    border-bottom: none;
+}
+
+.detail-label {
+    color: var(--text-light);
+}
+
+.detail-value {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.result-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.5;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.result-note i {
+    color: var(--btn-primary);
+    font-size: 1.2rem;
+    min-width: 24px;
+}
+
+/* Кнопки в модалке калькулятора */
+.modal-actions-large {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-large {
+    padding: 18px 24px;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* ===== ДЕСКТОПНЫЕ СТИЛИ ===== */
@@ -1688,14 +2372,35 @@ select {
         font-size: 2.5rem;
     }
     
-    .hero-stats {
-        flex-direction: row;
-        justify-content: center;
+    /* Гарантии на десктопе */
+    .hero-guarantees {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .guarantee-card {
+        padding: 25px 20px;
+    }
+    
+    .guarantee-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+    
+    .guarantee-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .guarantee-content p {
+        font-size: 0.9rem;
     }
     
     .hero-buttons {
         flex-direction: row;
         justify-content: center;
+        gap: 20px;
     }
     
     .services-grid {
@@ -1710,18 +2415,19 @@ select {
         gap: 30px;
     }
     
-    .pricing-cards {
+    /* Упрощенная секция цен на десктопе */
+    .pricing-features-grid {
         flex-direction: row;
-        align-items: stretch;
         gap: 30px;
     }
     
-    .pricing-card {
+    .pricing-feature {
         flex: 1;
     }
     
-    .pricing-card.featured {
-        transform: scale(1.05);
+    .calculator-preview {
+        max-width: 500px;
+        margin: 0 auto 25px;
     }
     
     .cta-buttons {
@@ -1752,15 +2458,36 @@ select {
         gap: 20px;
     }
     
-    .checkbox-group {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+    .checkbox-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .modal-actions-large {
+        flex-direction: row;
         gap: 15px;
     }
     
-    .modal-actions {
-        flex-direction: row;
-        gap: 15px;
+    /* Десктопные стили кнопок */
+    .btn-primary,
+    .btn-secondary,
+    .btn-success,
+    .service-btn,
+    .btn-contact,
+    .mobile-order-btn,
+    .map-link,
+    .social-btn {
+        width: auto;
+        min-width: 200px;
+    }
+    
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        min-width: 250px;
+    }
+    
+    /* Увеличиваем модалку калькулятора на десктопе */
+    .modal-content.calculator-modal {
+        max-width: 600px;
     }
 }
 
@@ -1786,10 +2513,6 @@ select {
         letter-spacing: 1.5px;
     }
     
-    .floating-cards {
-        display: block;
-    }
-    
     .hero .container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1801,10 +2524,33 @@ select {
         text-align: left;
     }
     
-    .hero-stats {
-        justify-content: flex-start;
-        flex-direction: row;
-        gap: 40px;
+    /* Гарантии на больших экранах */
+    .hero-guarantees {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+    
+    .guarantee-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+    }
+    
+    .guarantee-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+        margin: 0 auto 15px;
+    }
+    
+    .guarantee-content h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+    
+    .guarantee-content p {
+        font-size: 0.85rem;
+        line-height: 1.3;
     }
     
     .hero-buttons {
@@ -1824,6 +2570,22 @@ select {
         max-width: 600px;
     }
     
+    /* Упрощенная секция цен на больших экранах */
+    .pricing-simple {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .pricing-calculator-simple {
+        max-width: 600px;
+        margin: 0 auto 40px;
+    }
+    
+    .pricing-note {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
     .footer-col {
         text-align: left;
     }
@@ -1840,49 +2602,104 @@ select {
     .contact-info p {
         justify-content: flex-start;
     }
+    
+    /* Эффекты для десктопа */
+    .btn-primary:hover {
+        transform: translateY(-4px) scale(1.03);
+    }
+    
+    .btn-secondary:hover {
+        transform: translateY(-4px);
+    }
+    
+    /* Увеличиваем модалку калькулятора на больших экранах */
+    .modal-content.calculator-modal {
+        max-width: 700px;
+    }
+    
+    .checkbox-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* ===== TOUCH OPTIMIZATIONS ===== */
 @media (hover: none) and (pointer: coarse) {
-    /* Улучшаем отзывчивость тапов */
     button, 
     a, 
     .service-card,
     .portfolio-item,
-    .pricing-card {
-        -webkit-tap-highlight-color: rgba(0, 191, 255, 0.1);
+    .pricing-feature,
+    .guarantee-card {
+        -webkit-tap-highlight-color: rgba(255, 107, 53, 0.1);
     }
     
-    /* Улучшаем форму для мобильных */
     input, select, textarea {
-        font-size: 16px !important; /* Предотвращает зум в iOS */
+        font-size: 16px !important;
     }
     
-    /* Убираем задержку тапа на iOS */
     * {
         cursor: pointer;
         -webkit-touch-callout: none;
         user-select: none;
     }
     
-    /* Разрешаем выделение в формах */
     input, textarea, [contenteditable="true"] {
         user-select: text;
         -webkit-user-select: text;
     }
     
-    /* Улучшаем скролл на мобильных */
     .modal-content,
     .mobile-menu-links {
         -webkit-overflow-scrolling: touch;
     }
     
-    /* Оптимизация анимаций для мобильных */
     .service-card,
     .portfolio-item,
-    .pricing-card {
+    .pricing-feature,
+    .guarantee-card {
         transform: translateZ(0);
         backface-visibility: hidden;
+    }
+    
+    .checkbox-card {
+        min-height: 90px;
+    }
+    
+    .checkbox-card:active {
+        background: rgba(255, 107, 53, 0.1);
+        transform: scale(0.98);
+    }
+    
+    /* Увеличиваем зону клика для мобильных */
+    .btn-primary,
+    .btn-secondary,
+    .btn-success,
+    .service-btn,
+    .btn-contact,
+    .mobile-order-btn,
+    .social-btn {
+        min-height: 56px;
+        padding: 18px 24px;
+    }
+    
+    .btn-primary i,
+    .btn-secondary i,
+    .btn-success i,
+    .service-btn i,
+    .btn-contact i,
+    .mobile-order-btn i,
+    .social-btn i {
+        font-size: 1.2rem;
+    }
+    
+    .input-btn,
+    .counter-btn {
+        min-height: 50px;
+        min-width: 50px;
+    }
+    
+    .guarantee-card {
+        min-height: 100px;
     }
 }
 
@@ -1898,13 +2715,11 @@ select {
         height: -webkit-fill-available;
     }
     
-    /* Фикс для fixed элементов на iOS */
     .header {
         position: -webkit-sticky;
         position: sticky;
     }
     
-    /* Фикс для viewport на iOS 15+ */
     @supports (height: 100dvh) {
         .hero,
         .modal {
@@ -1920,15 +2735,6 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Класс для блокировки скролла при открытом меню */
-body.menu-open,
-body.modal-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-
 /* Адаптация для очень маленьких экранов */
 @media (max-width: 320px) {
     .hero-title {
@@ -1939,13 +2745,107 @@ body.modal-open {
         font-size: 1.3rem;
     }
     
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
     .btn-primary,
-    .btn-secondary {
+    .btn-secondary,
+    .btn-success,
+    .service-btn {
         padding: 14px 20px;
         font-size: 0.95rem;
+    }
+    
+    .btn-primary i,
+    .btn-secondary i,
+    .btn-success i,
+    .service-btn i {
+        font-size: 1rem;
+    }
+    
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .guarantee-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .guarantee-content h4 {
+        font-size: 0.9rem;
+    }
+    
+    .guarantee-content p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Анимация для логотипа */
+@keyframes logoPulse {
+    0% {
+        box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    }
+    50% {
+        box-shadow: 0 2px 20px rgba(255, 107, 53, 0.6);
+    }
+    100% {
+        box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    }
+}
+
+.logo-circle {
+    animation: logoPulse 3s infinite ease-in-out;
+}
+
+/* Градиентные тексты */
+.gradient-text {
+    background: linear-gradient(135deg, 
+        var(--btn-primary), 
+        var(--btn-secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Эффект для иконок в кнопках */
+.btn-primary i,
+.btn-secondary i,
+.btn-success i {
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Специальные эффекты для важных кнопок */
+.cta-buttons .btn-primary {
+    animation: pulse 2s infinite, bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Эффект неонового свечения для кнопок в темноте */
+@media (prefers-color-scheme: dark) {
+    .btn-primary {
+        box-shadow: 0 0 15px rgba(255, 107, 53, 0.5),
+                    0 4px 15px rgba(255, 107, 53, 0.3);
+    }
+    
+    .btn-primary:hover {
+        box-shadow: 0 0 25px rgba(255, 107, 53, 0.7),
+                    0 8px 25px rgba(255, 107, 53, 0.5);
+    }
+    
+    .btn-secondary {
+        box-shadow: 0 0 10px rgba(66, 133, 244, 0.3);
+    }
+    
+    .btn-secondary:hover {
+        box-shadow: 0 0 20px rgba(66, 133, 244, 0.5),
+                    0 8px 20px rgba(66, 133, 244, 0.3);
     }
 }

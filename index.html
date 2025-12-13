@@ -44,6 +44,11 @@
     }
     </script>
     
+    <!-- Предзагрузка ресурсов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
     <link rel="canonical" href="https://tazalykservice.kz">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧹</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -90,8 +95,8 @@
                 </div>
                 
                 <div class="header-actions">
-                    <button class="btn-contact" onclick="openWhatsAppModal()">
-                        <i class="fab fa-whatsapp"></i> Заказать
+                    <button class="btn-contact" onclick="openCalculator()">
+                        <i class="fas fa-calculator"></i> Рассчитать
                     </button>
                     <button class="menu-toggle" id="menuToggle">
                         <span></span>
@@ -114,18 +119,46 @@
                     Используем экологичные средства и современное оборудование.
                 </p>
                 
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number" data-count="500">0</span>
-                        <span class="stat-label">довольных клиентов</span>
+                <!-- Гарантии и выгоды для клиента -->
+                <div class="hero-guarantees">
+                    <div class="guarantee-card">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <div class="guarantee-content">
+                            <h4>Оплата после уборки</h4>
+                            <p>Сначала результат, потом оплата. Никаких предоплат!</p>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="1500">0</span>
-                        <span class="stat-label">выполненных заказов</span>
+                    
+                    <div class="guarantee-card">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="guarantee-content">
+                            <h4>Фиксированная цена</h4>
+                            <p>Никаких скрытых платежей и доплат после начала работ</p>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="98">0</span>
-                        <span class="stat-label">% качество</span>
+                    
+                    <div class="guarantee-card">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="guarantee-content">
+                            <h4>Официальный договор</h4>
+                            <p>Все работы по договору с гарантией и документами</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guarantee-card">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="guarantee-content">
+                            <h4>Гарантия качества</h4>
+                            <p>Бесплатная повторная уборка, если что-то не понравится</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -165,7 +198,7 @@
                         <li><i class="fas fa-check"></i> Мытье окон и подоконников</li>
                         <li><i class="fas fa-check"></i> Очистка сантехники</li>
                     </ul>
-                    <button class="service-btn" onclick="openCalculator()">Рассчитать</button>
+                    <button class="service-btn" onclick="openCalculatorWithService(1)">Рассчитать</button>
                 </div>
                 
                 <!-- Service 2 -->
@@ -180,7 +213,7 @@
                         <li><i class="fas fa-check"></i> Очистка рам и откосов</li>
                         <li><i class="fas fa-check"></i> Полировка стекол</li>
                     </ul>
-                    <button class="service-btn" onclick="openCalculator()">Рассчитать</button>
+                    <button class="service-btn" onclick="openCalculatorWithService(2)">Рассчитать</button>
                 </div>
                 
                 <!-- Service 3 -->
@@ -195,7 +228,7 @@
                         <li><i class="fas fa-check"></i> Чистка гардин и жалюзи</li>
                         <li><i class="fas fa-check"></i> Дезинфекция поверхностей</li>
                     </ul>
-                    <button class="service-btn" onclick="openCalculator()">Рассчитать</button>
+                    <button class="service-btn" onclick="openCalculatorWithService(3)">Рассчитать</button>
                 </div>
                 
                 <!-- Service 4 -->
@@ -210,7 +243,7 @@
                         <li><i class="fas fa-check"></i> Уборка после мероприятий</li>
                         <li><i class="fas fa-check"></i> Клининг для бизнеса</li>
                     </ul>
-                    <button class="service-btn" onclick="openCalculator()">Рассчитать</button>
+                    <button class="service-btn" onclick="openCalculatorWithService(4)">Рассчитать</button>
                 </div>
                 
                 <!-- Service 5 -->
@@ -225,7 +258,7 @@
                         <li><i class="fas fa-check"></i> Специальные цены</li>
                         <li><i class="fas fa-check"></i> Персональный менеджер</li>
                     </ul>
-                    <button class="service-btn" onclick="openCalculator()">Рассчитать</button>
+                    <button class="service-btn" onclick="openCalculatorWithService(5)">Рассчитать</button>
                 </div>
             </div>
         </div>
@@ -238,7 +271,7 @@
                 <span class="section-subtitle">Наши работы</span>
                 <h2 class="section-title">Результаты нашей работы</h2>
                 <p class="section-description">
-                    Более 500 успешно выполненных проектов в Алматы
+                    Более 1200 успешно выполненных проектов в Алматы
                 </p>
             </div>
             
@@ -359,80 +392,64 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing Section - Упрощенная версия -->
     <section id="pricing" class="pricing">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Цены</span>
                 <h2 class="section-title">Прозрачное ценообразование</h2>
                 <p class="section-description">
-                    Фиксированные цены без скрытых платежей
+                    Рассчитайте точную стоимость уборки с помощью нашего калькулятора
                 </p>
             </div>
             
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Базовый</h3>
-                        <div class="price">
-                            <span class="amount">от 5000 ₸</span>
-                            <span class="period">за квартиру</span>
-                        </div>
+            <div class="pricing-simple">
+                <div class="pricing-features-grid">
+                    <div class="pricing-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Фиксированная цена</h3>
+                        <p>Без скрытых платежей и доплат после начала работы</p>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Влажная уборка полов</li>
-                        <li><i class="fas fa-check"></i> Мытье кухни и санузла</li>
-                        <li><i class="fas fa-check"></i> Удаление пыли с поверхностей</li>
-                        <li><i class="fas fa-check"></i> Мытье зеркал и стекол</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Мойка окон с двух сторон</li>
-                    </ul>
-                    <button class="btn-primary" onclick="openCalculator()">Выбрать</button>
+                    <div class="pricing-feature">
+                        <i class="fas fa-percentage"></i>
+                        <h3>Скидки</h3>
+                        <p>Специальные условия для постоянных клиентов и коммерческих объектов</p>
+                    </div>
+                    <div class="pricing-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Гарантия</h3>
+                        <p>100% гарантия качества или бесплатная повторная уборка</p>
+                    </div>
                 </div>
                 
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Популярно</div>
-                    <div class="pricing-header">
-                        <h3>Стандартный</h3>
-                        <div class="price">
-                            <span class="amount">от 10000 ₸</span>
-                            <span class="period">за квартиру</span>
+                <div class="pricing-calculator-simple">
+                    <h3>Рассчитайте стоимость за 1 минуту</h3>
+                    <p>Укажите параметры вашего помещения и получите точный расчет</p>
+                    
+                    <div class="calculator-preview">
+                        <div class="preview-item">
+                            <span class="preview-label">Квартира 50 м² (2 комнаты)</span>
+                            <span class="preview-price">от 15 000 ₸</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Дом 100 м² (4 комнаты)</span>
+                            <span class="preview-price">от 25 000 ₸</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Офис 80 м²</span>
+                            <span class="preview-price">от 20 000 ₸</span>
                         </div>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Все из пакета Базовый</li>
-                        <li><i class="fas fa-check"></i> Мытье окон с двух сторон</li>
-                        <li><i class="fas fa-check"></i> Чистка бытовой техники</li>
-                        <li><i class="fas fa-check"></i> Уход за растениями</li>
-                        <li><i class="fas fa-check"></i> Дезинфекция поверхностей</li>
-                    </ul>
-                    <button class="btn-primary" onclick="openCalculator()">Выбрать</button>
+                    
+                    <button class="btn-primary" onclick="openCalculator()">
+                        <i class="fas fa-calculator"></i> Открыть калькулятор
+                    </button>
                 </div>
                 
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Премиум</h3>
-                        <div class="price">
-                            <span class="amount">от 15000 ₸</span>
-                            <span class="period">за квартиру</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Все из пакета Стандартный</li>
-                        <li><i class="fas fa-check"></i> Мойка люстр и светильников</li>
-                        <li><i class="fas fa-check"></i> Чистка гардин и жалюзи</li>
-                        <li><i class="fas fa-check"></i> Ароматизация помещений</li>
-                        <li><i class="fas fa-check"></i> Уборка балкона/лоджии</li>
-                    </ul>
-                    <button class="btn-primary" onclick="openCalculator()">Выбрать</button>
+                <div class="pricing-note">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Точная стоимость рассчитывается индивидуально с учетом всех параметров и выбранных дополнительных услуг</p>
                 </div>
-            </div>
-            
-            <div class="pricing-calculator">
-                <h3>Точный расчет стоимости</h3>
-                <p>Используйте наш калькулятор для индивидуального расчета</p>
-                <button class="btn-secondary" onclick="openCalculator()">
-                    <i class="fas fa-calculator"></i> Открыть калькулятор
-                </button>
             </div>
         </div>
     </section>
@@ -441,8 +458,8 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Готовы к безупречной чистоте?</h2>
-                <p>Оставьте заявку и получите бесплатную консультацию от нашего специалиста</p>
+                <h2>Закажите уборку прямо сейчас</h2>
+                <p>Получите точный расчет стоимости и забронируйте удобное время</p>
                 
                 <div class="cta-buttons">
                     <button class="btn-primary" onclick="openCalculator()">
@@ -456,6 +473,9 @@
                 <div class="cta-contacts">
                     <a href="tel:+77474507959" class="contact-link">
                         <i class="fas fa-phone"></i> +7 747 450 79 59
+                    </a>
+                    <a href="tel:+77476113590" class="contact-link">
+                        <i class="fas fa-phone"></i> +7 747 611 35 90
                     </a>
                     <a href="mailto:servicetazalyk@gmail.com" class="contact-link">
                         <i class="fas fa-envelope"></i> servicetazalyk@gmail.com
@@ -618,94 +638,247 @@
             <a href="#process" class="mobile-menu-link"><i class="fas fa-cogs"></i> Процесс</a>
             <a href="#pricing" class="mobile-menu-link"><i class="fas fa-tag"></i> Цены</a>
             <a href="#contact" class="mobile-menu-link"><i class="fas fa-phone"></i> Контакты</a>
-            <button class="btn-primary mobile-order-btn" onclick="openWhatsAppModal()">
-                <i class="fab fa-whatsapp"></i> Заказать уборку
+            <button class="btn-primary mobile-order-btn" onclick="openCalculator()">
+                <i class="fas fa-calculator"></i> Рассчитать стоимость
             </button>
         </div>
     </div>
 
     <!-- Modals -->
-    <!-- Calculator Modal -->
+    <!-- Calculator Modal - Увеличенная версия -->
     <div class="modal" id="calculatorModal">
         <div class="modal-content calculator-modal">
             <button class="modal-close" id="closeCalculator">
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal-header">
-                <h3><i class="fas fa-calculator"></i> Калькулятор стоимости</h3>
-                <p>Рассчитайте точную стоимость уборки</p>
+                <h3><i class="fas fa-calculator"></i> Калькулятор стоимости уборки</h3>
+                <p>Рассчитайте точную стоимость уборки за 1 минуту</p>
             </div>
             
             <div class="calculator-form">
-                <div class="form-group">
-                    <label for="roomType">Тип помещения</label>
-                    <select id="roomType">
-                        <option value="apartment">Квартира</option>
-                        <option value="house">Дом</option>
-                        <option value="office">Офис</option>
-                        <option value="commercial">Коммерческое помещение</option>
-                    </select>
-                </div>
-                
+                <!-- Первая строка: Тип помещения и площадь -->
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="area">Площадь (м²)</label>
-                        <input type="number" id="area" min="10" max="500" value="50">
+                    <div class="form-group form-group-large">
+                        <label for="roomType">
+                            <i class="fas fa-home"></i> Тип помещения
+                        </label>
+                        <select id="roomType" class="large-select">
+                            <option value="apartment">🏢 Квартира</option>
+                            <option value="house">🏠 Частный дом</option>
+                            <option value="office">💼 Офис</option>
+                            <option value="commercial">🏬 Коммерческое помещение</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="rooms">Количество комнат</label>
-                        <input type="number" id="rooms" min="1" max="10" value="2">
+                    
+                    <div class="form-group form-group-large">
+                        <label for="area">
+                            <i class="fas fa-ruler-combined"></i> Площадь (м²)
+                        </label>
+                        <div class="input-with-buttons">
+                            <button class="input-btn minus" type="button" onclick="changeArea(-10)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" id="area" min="10" max="500" value="50" class="large-input">
+                            <button class="input-btn plus" type="button" onclick="changeArea(10)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="input-range">
+                            <input type="range" id="areaRange" min="10" max="500" value="50" step="10">
+                            <div class="range-labels">
+                                <span>10 м²</span>
+                                <span>250 м²</span>
+                                <span>500 м²</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Вторая строка: Количество комнат и санузлов -->
+                <div class="form-row">
+                    <div class="form-group form-group-large">
+                        <label for="rooms">
+                            <i class="fas fa-door-open"></i> Количество комнат
+                        </label>
+                        <div class="counter">
+                            <button class="counter-btn minus" type="button" onclick="changeRooms(-1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" id="rooms" min="1" max="10" value="2" class="large-input">
+                            <button class="counter-btn plus" type="button" onclick="changeRooms(1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="counter-display">
+                            <span id="roomsDisplay">2 комнаты</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group form-group-large">
+                        <label for="bathrooms">
+                            <i class="fas fa-toilet"></i> Санузлы
+                        </label>
+                        <div class="counter">
+                            <button class="counter-btn minus" type="button" onclick="changeBathrooms(-1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" id="bathrooms" min="1" max="5" value="1" class="large-input">
+                            <button class="counter-btn plus" type="button" onclick="changeBathrooms(1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="counter-display">
+                            <span id="bathroomsDisplay">1 санузел</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Дополнительные услуги -->
                 <div class="form-group">
-                    <label>Дополнительные услуги</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="windows" checked>
-                            <span>Мойка окон</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="balcony">
-                            <span>Уборка балкона</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="chandelier">
-                            <span>Мытье люстр</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="disinfection">
-                            <span>Дезинфекция</span>
-                        </label>
+                    <label class="section-label">
+                        <i class="fas fa-star"></i> Дополнительные услуги
+                    </label>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-card">
+                            <label class="checkbox-label-large">
+                                <input type="checkbox" name="windows" id="windowsCheck">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon">
+                                        <i class="fas fa-window-maximize"></i>
+                                    </div>
+                                    <div class="checkbox-text">
+                                        <span class="checkbox-title">Мойка окон</span>
+                                        <span class="checkbox-price">+2 000 ₸</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-card">
+                            <label class="checkbox-label-large">
+                                <input type="checkbox" name="balcony" id="balconyCheck">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon">
+                                        <i class="fas fa-warehouse"></i>
+                                    </div>
+                                    <div class="checkbox-text">
+                                        <span class="checkbox-title">Уборка балкона</span>
+                                        <span class="checkbox-price">+1 000 ₸</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-card">
+                            <label class="checkbox-label-large">
+                                <input type="checkbox" name="chandelier" id="chandelierCheck">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <div class="checkbox-text">
+                                        <span class="checkbox-title">Мытье люстр</span>
+                                        <span class="checkbox-price">+1 500 ₸</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-card">
+                            <label class="checkbox-label-large">
+                                <input type="checkbox" name="disinfection" id="disinfectionCheck">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon">
+                                        <i class="fas fa-bacteria"></i>
+                                    </div>
+                                    <div class="checkbox-text">
+                                        <span class="checkbox-title">Дезинфекция</span>
+                                        <span class="checkbox-price">+1 000 ₸</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-card">
+                            <label class="checkbox-label-large">
+                                <input type="checkbox" name="fridge" id="fridgeCheck">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon">
+                                        <i class="fas fa-snowflake"></i>
+                                    </div>
+                                    <div class="checkbox-text">
+                                        <span class="checkbox-title">Мытье холодильника</span>
+                                        <span class="checkbox-price">+1 200 ₸</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-card">
+                            <label class="checkbox-label-large">
+                                <input type="checkbox" name="oven" id="ovenCheck">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                    <div class="checkbox-text">
+                                        <span class="checkbox-title">Чистка духовки</span>
+                                        <span class="checkbox-price">+1 800 ₸</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="calculator-result">
-                    <div class="result-header">
-                        <h4>Итоговая стоимость:</h4>
-                        <div class="total-price" id="totalPrice">15 000 ₸</div>
+                <!-- Результат расчета -->
+                <div class="calculator-result-large">
+                    <div class="result-header-large">
+                        <div class="result-title">
+                            <h4><i class="fas fa-file-invoice-dollar"></i> Итоговая стоимость</h4>
+                            <p>Предварительный расчет</p>
+                        </div>
+                        <div class="total-price-large" id="totalPrice">
+                            <span class="price-amount">15 000</span>
+                            <span class="price-currency">₸</span>
+                        </div>
                     </div>
-                    <div class="result-details">
-                        <div class="detail-item">
-                            <span>Базовая уборка:</span>
-                            <span>10 000 ₸</span>
+                    
+                    <div class="result-details-large">
+                        <div class="detail-row">
+                            <span class="detail-label">Базовая уборка (50 м²):</span>
+                            <span class="detail-value">10 000 ₸</span>
                         </div>
-                        <div class="detail-item">
-                            <span>Дополнительные услуги:</span>
-                            <span>5 000 ₸</span>
+                        <div class="detail-row">
+                            <span class="detail-label">Комнаты (2 шт.):</span>
+                            <span class="detail-value">2 000 ₸</span>
                         </div>
-                        <div class="detail-item total">
-                            <span>Итого:</span>
-                            <span>15 000 ₸</span>
+                        <div class="detail-row">
+                            <span class="detail-label">Дополнительные услуги:</span>
+                            <span class="detail-value">3 000 ₸</span>
                         </div>
+                        <div class="detail-row total">
+                            <span class="detail-label">Итого к оплате:</span>
+                            <span class="detail-value">15 000 ₸</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-note">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Точная стоимость будет подтверждена после выезда оценщика</p>
                     </div>
                 </div>
                 
-                <div class="modal-actions">
-                    <button class="btn-primary" onclick="sendCalculation()">
-                        <i class="fas fa-paper-plane"></i> Отправить расчет
+                <!-- Действия -->
+                <div class="modal-actions-large">
+                    <button class="btn-primary btn-large" onclick="sendCalculation()">
+                        <i class="fab fa-whatsapp"></i> Отправить в WhatsApp
                     </button>
-                    <button class="btn-secondary" onclick="closeCalculator()">
+                    <button class="btn-secondary btn-large" onclick="copyCalculation()">
+                        <i class="fas fa-copy"></i> Скопировать расчет
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="closeCalculator()">
                         <i class="fas fa-times"></i> Закрыть
                     </button>
                 </div>
@@ -759,7 +932,7 @@
             
             <div class="modal-note">
                 <i class="fas fa-info-circle"></i>
-                <p>(8:00-22:00)</p>
+                <p>Работаем ежедневно с 8:00 до 22:00</p>
             </div>
         </div>
     </div>
